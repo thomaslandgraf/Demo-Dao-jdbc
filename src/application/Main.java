@@ -10,8 +10,7 @@ void main() {
 
     SellerDao sellerDao = DaoFactory.createSellerDao();
 
-    LocalDate date = LocalDate.now();
-    Seller seller = new Seller(1, "Bob", "bob@gmail.com", date, 2500.0, obj);
+    Seller seller = sellerDao.findById(3);
 
     IO.println(seller);
 }
