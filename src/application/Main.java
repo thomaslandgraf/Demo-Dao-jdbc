@@ -25,4 +25,9 @@ void main() {
         System.out.println(obj);
     }
 
+    IO.println("===TEST 4: Seller Insert===");
+    Seller newSeller = new Seller(null, "Greg", "greg@gmail.com", LocalDate.now(), 4000.0, dep);
+    sellerDao.insert(newSeller);
+    IO.println("Inserted! New id = " + newSeller.getId());
+    
 }
