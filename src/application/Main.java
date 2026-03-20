@@ -11,4 +11,12 @@ void main() {
     IO.println("===TEST 1: Seller findById===");
     Seller seller = sellerDao.findById(4);
     IO.println(seller);
+
+    IO.println("===TEST 2: Find seller by DepartmentId===");
+    Department dep = new Department(4, null);
+    List<Seller> list  = sellerDao.findByDepartment(dep);
+    for(Seller obj : list) {
+        System.out.println(obj);
+    }
+
 }
