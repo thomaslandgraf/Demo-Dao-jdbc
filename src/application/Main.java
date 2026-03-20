@@ -5,12 +5,10 @@ import model.entities.Seller;
 
 void main() {
 
-    Department obj = new Department(1, "Books");
-    IO.println(obj);
 
     SellerDao sellerDao = DaoFactory.createSellerDao();
 
-    Seller seller = sellerDao.findById(3);
-
+    IO.println("===TEST 1: Seller findById===");
+    Seller seller = sellerDao.findById(4);
     IO.println(seller);
 }
