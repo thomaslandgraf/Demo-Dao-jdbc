@@ -23,9 +23,7 @@ public class SellerDaoJDBC implements SellerDao {
 
     @Override
     public void insert(Seller obj) {
-
         PreparedStatement st = null;
-
         try{
             st = conn.prepareStatement("INSERT INTO seller " +
                                            "(Name, Email, BirthDate, BaseSalary, DepartmentId) " +
@@ -64,6 +62,29 @@ public class SellerDaoJDBC implements SellerDao {
 
     @Override
     public void update(Seller obj) {
+        PreparedStatement st = null;
+        try{
+            st = conn.prepareStatement("UPDATE seller " +
+                            "SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? " +
+                            "WHERE Id = ?");
+
+            st.setString(1, obj.getName());
+            st.setString(2, obj.getEmail());
+            Date sqlDate = Date.valueOf(obj.getBirthDate());
+            st.setDate(3, sqlDate);
+            st.setDouble(4, obj.getBaseSalary());
+            st.setObject(5, obj.getDepartment().getId());
+            st.setInt(6, obj.getId());
+
+            st.executeUpdate();
+
+        }
+        catch (SQLException e){
+            throw new DbException(e.getMessage());
+        }
+        finally {
+            DB.closeStatement(st);
+        }
 
     }
 
