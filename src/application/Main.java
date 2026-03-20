@@ -19,4 +19,10 @@ void main() {
         System.out.println(obj);
     }
 
+    IO.println("===TEST 3: Find seller findAll===");
+    list = sellerDao.findAll();
+    for(Seller obj : list) {
+        System.out.println(obj);
+    }
+
 }
