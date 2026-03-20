@@ -5,6 +5,7 @@ import model.entities.Seller;
 
 void main() {
 
+    Scanner sc = new Scanner(System.in);
 
     SellerDao sellerDao = DaoFactory.createSellerDao();
 
@@ -40,4 +41,13 @@ void main() {
     sellerDao.update(seller);
     IO.println("Update complete!");
 
+    IO.println();
+    IO.println("===TEST 5: Seller DELETE===");
+    System.out.print("Enter id for delete test: ");
+    int id = sc.nextInt();
+    sc.nextLine();
+    sellerDao.deleteById(id);
+    System.out.println("DELETE COMPLETE!");
+
+    sc.close();
 }
